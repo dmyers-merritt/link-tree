@@ -1,0 +1,3 @@
+# Static single-file site — index.html at repo root, no build step.
+[build]
+  publish = "."

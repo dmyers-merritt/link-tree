@@ -1,0 +1,316 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Merritt Leasing Toolbox</title>
+<style>
+  :root {
+    --navy: #002f6c;
+    --green: #64a70b;
+    --deep-green: #00953b;
+    --light-blue: #0085ad;
+    --slate: #4d5858;
+    --cool-gray: #d9d8d6;
+    --cream: #faf9f6;
+    --card: #ffffff;
+    --ink: #1c2124;
+    --radius: 3px;
+    --shadow: 0 1px 3px rgba(0,0,0,.10), 0 6px 18px rgba(0,47,108,.06);
+    --sans: "Avenir Next LT Pro", "Avenir Next", Helvetica, Arial, sans-serif;
+    --head: "Tungsten", "Avenir Next LT Pro", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body {
+    font-family: var(--sans);
+    color: var(--ink);
+    background: var(--cream);
+    -webkit-font-smoothing: antialiased;
+    line-height: 1.5;
+  }
+
+  /* ---------- Header ---------- */
+  header {
+    background: var(--navy);
+    color: #fff;
+    padding: 44px 24px 40px;
+    border-bottom: 4px solid var(--green);
+  }
+  .header-inner { max-width: 1040px; margin: 0 auto; }
+  .brand-rider {
+    font-size: 12px;
+    letter-spacing: .22em;
+    text-transform: uppercase;
+    color: var(--green);
+    font-weight: 600;
+    margin: 0 0 10px;
+  }
+  h1 {
+    font-family: var(--head);
+    font-weight: 600;
+    font-size: clamp(34px, 6vw, 52px);
+    line-height: 1.02;
+    letter-spacing: .01em;
+    text-transform: uppercase;
+    margin: 0 0 12px;
+  }
+  .subtitle {
+    font-size: 16px;
+    color: #cdd6e4;
+    max-width: 640px;
+    margin: 0;
+  }
+
+  /* ---------- Layout ---------- */
+  main { max-width: 1040px; margin: 0 auto; padding: 44px 24px 64px; }
+  .section-head {
+    display: flex;
+    align-items: center;
+    gap: 12px;
+    margin: 0 0 20px;
+  }
+  .section-head::before {
+    content: "";
+    width: 26px; height: 4px;
+    background: var(--green);
+    border-radius: 2px;
+    flex: none;
+  }
+  .section-head h2 {
+    font-family: var(--head);
+    text-transform: uppercase;
+    letter-spacing: .04em;
+    font-size: 22px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0;
+  }
+  section { margin-bottom: 52px; }
+
+  /* ---------- Tool cards ---------- */
+  .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
+  .tool {
+    display: flex;
+    flex-direction: column;
+    background: var(--card);
+    border: 1px solid var(--cool-gray);
+    border-top: 4px solid var(--green);
+    border-radius: var(--radius);
+    padding: 24px 22px 22px;
+    text-decoration: none;
+    color: inherit;
+    box-shadow: var(--shadow);
+    transition: transform .12s ease, box-shadow .12s ease, border-color .12s ease;
+  }
+  .tool:hover { transform: translateY(-3px); box-shadow: 0 4px 10px rgba(0,0,0,.12), 0 14px 30px rgba(0,47,108,.12); }
+  .tool .tool-name {
+    font-family: var(--head);
+    text-transform: uppercase;
+    letter-spacing: .03em;
+    font-size: 21px;
+    font-weight: 600;
+    color: var(--navy);
+    margin: 0 0 8px;
+  }
+  .tool .tool-desc { font-size: 14.5px; color: var(--slate); margin: 0 0 18px; flex: 1; }
+  .tool .tool-go {
+    font-size: 13px; font-weight: 600; letter-spacing: .04em; text-transform: uppercase;
+    color: var(--green); display: inline-flex; align-items: center; gap: 7px;
+  }
+  .tool .tool-go .arrow { transition: transform .12s ease; }
+  .tool:hover .tool-go .arrow { transform: translateX(4px); }
+  .tool .tool-url { font-size: 12px; color: #9aa0a6; margin-top: 4px; }
+
+  /* ---------- Template groups ---------- */
+  .group-label {
+    font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
+    color: var(--slate); margin: 26px 0 12px;
+  }
+  .group-label:first-of-type { margin-top: 0; }
+  .files { display: grid; grid-template-columns: repeat(auto-fill, minmax(300px, 1fr)); gap: 12px; }
+  .file {
+    display: flex; align-items: center; gap: 14px;
+    background: var(--card);
+    border: 1px solid var(--cool-gray);
+    border-radius: var(--radius);
+    padding: 14px 16px;
+    text-decoration: none; color: inherit;
+    transition: border-color .12s ease, box-shadow .12s ease, transform .12s ease;
+  }
+  .file:hover { border-color: var(--green); box-shadow: var(--shadow); transform: translateY(-1px); }
+  .file .ext {
+    flex: none; width: 42px; height: 42px; border-radius: var(--radius);
+    display: grid; place-items: center; color: #fff; font-size: 11px; font-weight: 700; letter-spacing: .02em;
+  }
+  .ext.xlsx { background: var(--deep-green); }
+  .ext.xltx { background: var(--light-blue); }
+  .ext.docx { background: var(--navy); }
+  .file .file-body { min-width: 0; flex: 1; }
+  .file .file-name { font-size: 14.5px; font-weight: 600; color: var(--navy); margin: 0 0 2px; }
+  .file .file-desc { font-size: 12.5px; color: var(--slate); margin: 0; }
+  .file .dl { flex: none; font-size: 16px; font-weight: 700; color: var(--green); }
+
+  /* ---------- Footer ---------- */
+  footer {
+    border-top: 1px solid var(--cool-gray);
+    background: #fff;
+    color: var(--slate);
+    font-size: 12.5px;
+    padding: 26px 24px;
+  }
+  .footer-inner { max-width: 1040px; margin: 0 auto; display: flex; justify-content: space-between; flex-wrap: wrap; gap: 8px; }
+  .footer-inner strong { color: var(--navy); }
+  .note {
+    background: #f0f4e6; border: 1px solid #d5e3b6; border-left: 4px solid var(--green);
+    border-radius: var(--radius); padding: 14px 16px; font-size: 13px; color: var(--slate);
+    margin-bottom: 40px;
+  }
+  .note strong { color: var(--navy); }
+
+  @media (max-width: 560px) {
+    header { padding: 34px 20px 30px; }
+    main { padding: 32px 20px 48px; }
+    .footer-inner { flex-direction: column; }
+  }
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <p class="brand-rider">Merritt Properties &nbsp;•&nbsp; Leasing</p>
+      <h1>Leasing Toolbox</h1>
+      <p class="subtitle">One place for the web tools and spreadsheet templates the Merritt leasing team uses every day. Open a tool in your browser, or download a template straight into Excel.</p>
+    </div>
+  </header>
+
+  <main>
+    <!-- TOOLS -->
+    <section>
+      <div class="section-head"><h2>Web Tools</h2></div>
+      <div class="tools">
+        <a class="tool" href="https://rent-table.netlify.app" target="_blank" rel="noopener">
+          <div class="tool-name">Rent Table Tool</div>
+          <p class="tool-desc">Build clean, branded rent tables and lease comparisons in the browser — no spreadsheet required.</p>
+          <span class="tool-go">Open tool <span class="arrow">&rarr;</span></span>
+          <span class="tool-url">rent-table.netlify.app</span>
+        </a>
+        <a class="tool" href="https://merrittcomps.netlify.app" target="_blank" rel="noopener">
+          <div class="tool-name">Comp Database</div>
+          <p class="tool-desc">Search and add lease and sale comps to the shared Merritt comp database.</p>
+          <span class="tool-go">Open tool <span class="arrow">&rarr;</span></span>
+          <span class="tool-url">merrittcomps.netlify.app</span>
+        </a>
+        <a class="tool" href="https://devgraphs.netlify.app" target="_blank" rel="noopener">
+          <div class="tool-name">Development Pipeline</div>
+          <p class="tool-desc">Interactive dashboard tracking Merritt's active development and lease-up portfolio — occupancy, revenue, and timelines.</p>
+          <span class="tool-go">Open tool <span class="arrow">&rarr;</span></span>
+          <span class="tool-url">devgraphs.netlify.app</span>
+        </a>
+      </div>
+    </section>
+
+    <!-- TEMPLATES -->
+    <section>
+      <div class="section-head"><h2>Spreadsheet Templates</h2></div>
+      <div class="note">
+        <strong>These download the live version</strong> from the Leasing SharePoint — always the latest, and any Merritt edit updates them automatically. You may be asked to sign in with your Merritt account. Save your working copy under a new name; don't overwrite the template.
+      </div>
+
+      <p class="group-label">Rent &amp; Deal Analysis</p>
+      <div class="files">
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/Rent%20Schedule%20Calculator%202.02.xlsx" target="_blank" rel="noopener">
+          <span class="ext xlsx">XLSX</span>
+          <span class="file-body"><span class="file-name">Rent Schedule Calculator 2.02</span><p class="file-desc">Build rent schedules with escalations and free rent.</p></span>
+          <span class="dl">↓</span>
+        </a>
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/Blended%20Rent%20Calculation.xlsx" target="_blank" rel="noopener">
+          <span class="ext xlsx">XLSX</span>
+          <span class="file-body"><span class="file-name">Blended Rent Calculation</span><p class="file-desc">Calculate a blended rate across multiple terms or spaces.</p></span>
+          <span class="dl">↓</span>
+        </a>
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/Template%20Cash%20Flow%203.0.xlsx" target="_blank" rel="noopener">
+          <span class="ext xlsx">XLSX</span>
+          <span class="file-body"><span class="file-name">Deal Cash Flow 3.0</span><p class="file-desc">Model estimated cash flow for a lease or deal.</p></span>
+          <span class="dl">↓</span>
+        </a>
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/AMORTIZATION%20SCHEDULE.xlsx" target="_blank" rel="noopener">
+          <span class="ext xlsx">XLSX</span>
+          <span class="file-body"><span class="file-name">Amortization Schedule</span><p class="file-desc">Amortize TI, free rent, or other costs over a term.</p></span>
+          <span class="dl">↓</span>
+        </a>
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/GSA%20rent%20calc%20template.xlsx" target="_blank" rel="noopener">
+          <span class="ext xlsx">XLSX</span>
+          <span class="file-body"><span class="file-name">GSA Rent Calculator</span><p class="file-desc">Rent calculation for GSA / government leases.</p></span>
+          <span class="dl">↓</span>
+        </a>
+      </div>
+
+      <p class="group-label">OPEX &amp; Lease Structure</p>
+      <div class="files">
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/Merritt%20Property%20OPEX%20Table%20Maker.xlsx" target="_blank" rel="noopener">
+          <span class="ext xlsx">XLSX</span>
+          <span class="file-body"><span class="file-name">OPEX Table Maker</span><p class="file-desc">Generate operating expense / CAM tables by property.</p></span>
+          <span class="dl">↓</span>
+        </a>
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/IG%20to%20NNN%20Conversion%20Sheet%20NEW%201.xlsx" target="_blank" rel="noopener">
+          <span class="ext xlsx">XLSX</span>
+          <span class="file-body"><span class="file-name">IG → NNN Conversion Sheet</span><p class="file-desc">Convert industrial gross rates to triple-net equivalents.</p></span>
+          <span class="dl">↓</span>
+        </a>
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/Base%20Year%20Explanation.xlsx" target="_blank" rel="noopener">
+          <span class="ext xlsx">XLSX</span>
+          <span class="file-body"><span class="file-name">Base Year Explanation</span><p class="file-desc">Illustrate base-year stops and expense pass-throughs.</p></span>
+          <span class="dl">↓</span>
+        </a>
+      </div>
+
+      <p class="group-label">Terminations</p>
+      <div class="files">
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/Buyout%20Termination%20Fee%20Calc%20TEMPLATE.xlsx" target="_blank" rel="noopener">
+          <span class="ext xlsx">XLSX</span>
+          <span class="file-body"><span class="file-name">Buyout / Termination Fee Calc</span><p class="file-desc">Calculate an early lease termination or buyout fee.</p></span>
+          <span class="dl">↓</span>
+        </a>
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/Termiantion%20Fee%20Template%20w%20Amortizations.xltx" target="_blank" rel="noopener">
+          <span class="ext xltx">XLTX</span>
+          <span class="file-body"><span class="file-name">Termination Fee w/ Amortizations</span><p class="file-desc">Termination fee including unamortized cost recovery.</p></span>
+          <span class="dl">↓</span>
+        </a>
+      </div>
+
+      <p class="group-label">Documents &amp; Data</p>
+      <div class="files">
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/Document%20Writing%20Helper.xlsx" target="_blank" rel="noopener">
+          <span class="ext xlsx">XLSX</span>
+          <span class="file-body"><span class="file-name">Document Writing Helper</span><p class="file-desc">Reference sheet for drafting leases and proposals.</p></span>
+          <span class="dl">↓</span>
+        </a>
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/LOI%20Language%202025.docx" target="_blank" rel="noopener">
+          <span class="ext docx">DOCX</span>
+          <span class="file-body"><span class="file-name">LOI Language 2025</span><p class="file-desc">Standard letter-of-intent language and clauses.</p></span>
+          <span class="dl">↓</span>
+        </a>
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/YARDI%20to%20Rent%20Table.xlsx" target="_blank" rel="noopener">
+          <span class="ext xlsx">XLSX</span>
+          <span class="file-body"><span class="file-name">YARDI → Rent Table</span><p class="file-desc">Convert a Yardi export into rent table format.</p></span>
+          <span class="dl">↓</span>
+        </a>
+        <a class="file" href="https://merrittcompanies.sharepoint.com/teams/Leasing/_layouts/15/download.aspx?SourceUrl=/teams/Leasing/Shared%20Documents/Leasing%20OffSite%20Resources/Spreadsheets%20and%20Templates/Parking%20Garage%20Agreement%20HA1.xltx" target="_blank" rel="noopener">
+          <span class="ext xltx">XLTX</span>
+          <span class="file-body"><span class="file-name">Parking Garage Agreement</span><p class="file-desc">Parking agreement template.</p></span>
+          <span class="dl">↓</span>
+        </a>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <div class="footer-inner">
+      <span><strong>Merritt Properties</strong> &nbsp;•&nbsp; Leasing Toolbox</span>
+      <span>Internal use. Questions? Contact Dalton Myers &nbsp;•&nbsp; dmyers@merrittproperties.com</span>
+    </div>
+  </footer>
+</body>
+</html>
