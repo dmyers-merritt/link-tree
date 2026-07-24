@@ -123,6 +123,46 @@
   .tool:hover .tool-go .arrow { transform: translateX(4px); }
   .tool .tool-url { font-size: 12px; color: #9aa0a6; margin-top: 4px; }
 
+  /* ---------- Consolidated tool columns ---------- */
+  .tool-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .tool-col {
+    background: var(--card);
+    border: 1px solid var(--cool-gray);
+    border-top: 3px solid var(--green);
+    border-radius: var(--radius);
+    padding: 14px 12px 8px;
+    box-shadow: var(--shadow);
+  }
+  .tool-col.comps { border-top-color: var(--navy); }
+  .tool-col.data { border-top-color: var(--light-blue); }
+  .col-head {
+    font-size: 11px; font-weight: 700; letter-spacing: .13em; text-transform: uppercase;
+    color: var(--slate); margin: 2px 6px 8px;
+  }
+  .link {
+    display: flex; align-items: center; gap: 11px;
+    padding: 9px 8px; border-radius: var(--radius);
+    text-decoration: none; color: inherit;
+    transition: background .12s ease;
+  }
+  .link + .link { border-top: 1px solid #eef0ec; }
+  .link:hover { background: #f4f7ec; }
+  .tool-col.comps .link:hover { background: #eef2f8; }
+  .tool-col.data .link:hover { background: #eaf4f7; }
+  .link .ic {
+    flex: none; width: 30px; height: 30px; border-radius: var(--radius);
+    display: grid; place-items: center; color: #fff; font-size: 13px; font-weight: 700;
+    background: var(--green);
+  }
+  .tool-col.comps .link .ic { background: var(--navy); }
+  .tool-col.data .link .ic { background: var(--light-blue); }
+  .link .l-name { flex: 1; min-width: 0; font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.2; }
+  .link .l-arrow { flex: none; color: var(--cool-gray); font-size: 15px; transition: transform .12s ease, color .12s ease; }
+  .link:hover .l-arrow { color: var(--green); transform: translateX(3px); }
+  .tool-col.comps .link:hover .l-arrow { color: var(--navy); }
+  .tool-col.data .link:hover .l-arrow { color: var(--light-blue); }
+  @media (max-width: 720px) { .tool-cols { grid-template-columns: 1fr; } }
+
   /* ---------- Template groups ---------- */
   .group-label {
     font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
@@ -186,42 +226,30 @@
   </header>
 
   <main>
-    <!-- WEB TOOLS -->
+    <!-- TOOLS (consolidated) -->
     <section>
-      <div class="section-head"><h2>Web Tools</h2></div>
-      <div class="tools">
-        <a class="tool" href="https://rent-table.netlify.app" target="_blank" rel="noopener">
-          <div class="tool-name">Rent / Lease Comparison</div>
-          <p class="tool-desc">Compare lease and renewal options side by side — rents, escalations, free rent, and effective rates.</p>
-          <span class="tool-go">Open tool <span class="arrow">&rarr;</span></span>
-          <span class="tool-url">rent-table.netlify.app</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- LEASE COMPS -->
-    <section>
-      <div class="section-head"><h2>Lease Comps</h2></div>
-      <div class="tools">
-        <a class="tool" href="https://merrittcomps.netlify.app" target="_blank" rel="noopener">
-          <div class="tool-name">Comp Database</div>
-          <p class="tool-desc">Search and add lease and sale comps to the shared Merritt comp database.</p>
-          <span class="tool-go">Open tool <span class="arrow">&rarr;</span></span>
-          <span class="tool-url">merrittcomps.netlify.app</span>
-        </a>
-      </div>
-    </section>
-
-    <!-- MERRITT DATA -->
-    <section>
-      <div class="section-head"><h2>Merritt Data</h2></div>
-      <div class="tools">
-        <a class="tool" href="https://devgraphs.netlify.app" target="_blank" rel="noopener">
-          <div class="tool-name">Development Pipeline</div>
-          <p class="tool-desc">Interactive dashboard tracking Merritt's active development and lease-up portfolio — occupancy, revenue, and timelines.</p>
-          <span class="tool-go">Open tool <span class="arrow">&rarr;</span></span>
-          <span class="tool-url">devgraphs.netlify.app</span>
-        </a>
+      <div class="section-head"><h2>Tools &amp; Dashboards</h2></div>
+      <div class="tool-cols">
+        <div class="tool-col comps">
+          <p class="col-head">Market Data</p>
+          <a class="link" href="https://merrittcomps.netlify.app" target="_blank" rel="noopener" title="Search and add lease and sale comps">
+            <span class="ic">C</span><span class="l-name">Comp Database</span><span class="l-arrow">&rarr;</span>
+          </a>
+          <!-- Add more Market Data tools here as slim <a class="link"> rows -->
+        </div>
+        <div class="tool-col web">
+          <p class="col-head">Web Tools</p>
+          <a class="link" href="https://rent-table.netlify.app" target="_blank" rel="noopener" title="Compare lease and renewal options side by side">
+            <span class="ic">R</span><span class="l-name">Rent / Lease Comparison</span><span class="l-arrow">&rarr;</span>
+          </a>
+        </div>
+        <div class="tool-col data">
+          <p class="col-head">Merritt Data</p>
+          <a class="link" href="https://devgraphs.netlify.app" target="_blank" rel="noopener" title="Development & lease-up pipeline dashboard">
+            <span class="ic">D</span><span class="l-name">Development Pipeline</span><span class="l-arrow">&rarr;</span>
+          </a>
+          <!-- Add more Merritt Data dashboards here as slim <a class="link"> rows: TI, Leasing Activity, etc. -->
+        </div>
       </div>
     </section>
 
