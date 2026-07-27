@@ -31,19 +31,24 @@
     line-height: 1.5;
   }
 
-  /* ---------- Logo bar ---------- */
-  .logobar { background: #fff; border-bottom: 1px solid var(--cool-gray); }
-  .logobar-inner { max-width: 1040px; margin: 0 auto; padding: 16px 24px; }
-  .logo { height: 44px; width: auto; display: block; }
-
   /* ---------- Header ---------- */
   header {
     background: var(--navy);
     color: #fff;
     padding: 44px 24px 40px;
     border-bottom: 4px solid var(--green);
+    overflow: hidden;
   }
-  .header-inner { max-width: 1040px; margin: 0 auto; }
+  .header-inner { max-width: 1040px; margin: 0 auto; position: relative; }
+  .hero-mark {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 132px;
+    width: auto;
+    pointer-events: none;
+  }
   .brand-rider {
     font-size: 12px;
     letter-spacing: .22em;
@@ -214,6 +219,12 @@
   }
   .note strong { color: var(--navy); }
 
+  @media (max-width: 720px) {
+    .hero-mark { height: 84px; opacity: .5; right: 0; top: 18px; transform: none; }
+  }
+  @media (max-width: 480px) {
+    .hero-mark { display: none; }
+  }
   @media (max-width: 560px) {
     header { padding: 34px 20px 30px; }
     main { padding: 32px 20px 48px; }
@@ -222,15 +233,10 @@
 </style>
 </head>
 <body>
-  <div class="logobar">
-    <div class="logobar-inner">
-      <img class="logo" src="assets/merritt-logo.svg" alt="Merritt Properties" />
-    </div>
-  </div>
-
   <header>
     <div class="header-inner">
-      <p class="brand-rider">Leasing</p>
+      <img class="hero-mark" src="assets/merritt-mark.svg" alt="Merritt Properties" />
+      <p class="brand-rider">Merritt Properties &nbsp;•&nbsp; Leasing</p>
       <h1>Leasing Toolbox</h1>
       <p class="subtitle">One place for the web tools and spreadsheet templates the Merritt leasing team uses every day. Open a tool in your browser, or download a template straight into Excel.</p>
     </div>
