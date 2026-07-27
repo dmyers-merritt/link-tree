@@ -39,12 +39,16 @@
     border-bottom: 4px solid var(--green);
     overflow: hidden;
   }
-  .header-inner { max-width: 1280px; margin: 0 auto; }
-  .hero-top { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
-  .hero-titles { min-width: 0; }
-  .hero-mark { height: 72px; width: auto; display: block; margin-top: 22px; pointer-events: none; }
-  .hero-widget { flex: none; }
-  .hero-widget iframe { width: 520px; max-width: 100%; height: 440px; border: 0; display: block; }
+  .header-inner { max-width: 1280px; margin: 0 auto; position: relative; }
+  .hero-mark {
+    position: absolute;
+    right: 4px;
+    top: 50%;
+    transform: translateY(-50%);
+    height: 132px;
+    width: auto;
+    pointer-events: none;
+  }
   .brand-rider {
     font-size: 12px;
     letter-spacing: .22em;
@@ -169,6 +173,15 @@
   .tool-col.data .link:hover .l-arrow { color: var(--light-blue); }
   @media (max-width: 720px) { .tool-cols { grid-template-columns: 1fr; } }
 
+  /* ---------- Data & Dashboards: stacked categories + live widget ---------- */
+  .dd-grid { display: grid; grid-template-columns: 1fr 520px; gap: 14px; align-items: start; }
+  .dd-left { display: grid; gap: 14px; }
+  .dd-widget iframe { width: 520px; max-width: 100%; height: 440px; border: 0; display: block; }
+  @media (max-width: 900px) {
+    .dd-grid { grid-template-columns: 1fr; }
+    .dd-widget iframe { width: 100%; }
+  }
+
   /* ---------- Template groups ---------- */
   .group-label {
     font-size: 12.5px; font-weight: 700; letter-spacing: .12em; text-transform: uppercase;
@@ -215,10 +228,11 @@
   }
   .note strong { color: var(--navy); }
 
-  @media (max-width: 760px) {
-    .hero-top { flex-direction: column; align-items: flex-start; gap: 20px; }
-    .hero-widget { width: 100%; }
-    .hero-mark { height: 60px; margin-top: 18px; }
+  @media (max-width: 720px) {
+    .hero-mark { height: 84px; opacity: .5; right: 0; top: 18px; transform: none; }
+  }
+  @media (max-width: 480px) {
+    .hero-mark { display: none; }
   }
   @media (max-width: 560px) {
     header { padding: 34px 20px 30px; }
@@ -230,16 +244,10 @@
 <body>
   <header>
     <div class="header-inner">
-      <div class="hero-top">
-        <div class="hero-titles">
-          <p class="brand-rider">Merritt Properties &nbsp;•&nbsp; Leasing</p>
-          <h1>Leasing Tools</h1>
-          <img class="hero-mark" src="assets/merritt-mark.svg" alt="Merritt Properties" />
-        </div>
-        <div class="hero-widget">
-          <iframe src="https://merrittliveoccupancy.netlify.app/compact.html" title="Live Occupancy" loading="lazy"></iframe>
-        </div>
-      </div>
+      <img class="hero-mark" src="assets/merritt-mark.svg" alt="Merritt Properties" />
+      <p class="brand-rider">Merritt Properties &nbsp;•&nbsp; Leasing</p>
+      <h1>Leasing Tools</h1>
+      <p class="subtitle">One place for the web tools and spreadsheet templates the Merritt leasing team uses every day. Open a tool in your browser, or download a template straight into Excel.</p>
     </div>
   </header>
 
@@ -247,23 +255,28 @@
     <!-- DATA & DASHBOARDS -->
     <section>
       <div class="section-head"><h2>Data &amp; Dashboards</h2></div>
-      <div class="tool-cols">
-        <div class="tool-col comps">
-          <p class="col-head">Market Data</p>
-          <a class="link" href="https://merrittcomps.netlify.app" target="_blank" rel="noopener" title="Search and add lease and sale comps">
-            <span class="ic">C</span><span class="l-name">Comp Database</span><span class="l-arrow">&rarr;</span>
-          </a>
-          <!-- Add more Market Data tools here as slim <a class="link"> rows -->
+      <div class="dd-grid">
+        <div class="dd-left">
+          <div class="tool-col comps">
+            <p class="col-head">Market Data</p>
+            <a class="link" href="https://merrittcomps.netlify.app" target="_blank" rel="noopener" title="Search and add lease and sale comps">
+              <span class="ic">C</span><span class="l-name">Comp Database</span><span class="l-arrow">&rarr;</span>
+            </a>
+            <!-- Add more Market Data tools here as slim <a class="link"> rows -->
+          </div>
+          <div class="tool-col data">
+            <p class="col-head">Merritt Data</p>
+            <a class="link" href="https://devgraphs.netlify.app" target="_blank" rel="noopener" title="Development & lease-up pipeline dashboard">
+              <span class="ic">D</span><span class="l-name">Development Pipeline</span><span class="l-arrow">&rarr;</span>
+            </a>
+            <a class="link" href="https://merrittlact.netlify.app" target="_blank" rel="noopener" title="Leasing activity dashboard">
+              <span class="ic">L</span><span class="l-name">Leasing Activity</span><span class="l-arrow">&rarr;</span>
+            </a>
+            <!-- Add more Merritt Data dashboards here as slim <a class="link"> rows: TI, etc. -->
+          </div>
         </div>
-        <div class="tool-col data">
-          <p class="col-head">Merritt Data</p>
-          <a class="link" href="https://devgraphs.netlify.app" target="_blank" rel="noopener" title="Development & lease-up pipeline dashboard">
-            <span class="ic">D</span><span class="l-name">Development Pipeline</span><span class="l-arrow">&rarr;</span>
-          </a>
-          <a class="link" href="https://merrittlact.netlify.app" target="_blank" rel="noopener" title="Leasing activity dashboard">
-            <span class="ic">L</span><span class="l-name">Leasing Activity</span><span class="l-arrow">&rarr;</span>
-          </a>
-          <!-- Add more Merritt Data dashboards here as slim <a class="link"> rows: TI, etc. -->
+        <div class="dd-widget">
+          <iframe src="https://merrittliveoccupancy.netlify.app/compact.html" title="Live Occupancy" loading="lazy"></iframe>
         </div>
       </div>
     </section>
