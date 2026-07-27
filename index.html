@@ -134,7 +134,7 @@
   .tool .tool-url { font-size: 12px; color: #9aa0a6; margin-top: 4px; }
 
   /* ---------- Consolidated tool columns ---------- */
-  .tool-cols { display: grid; grid-template-columns: repeat(3, 1fr); gap: 14px; }
+  .tool-cols { display: grid; grid-template-columns: repeat(2, 1fr); gap: 14px; }
   .tool-col {
     background: var(--card);
     border: 1px solid var(--cool-gray);
@@ -243,9 +243,9 @@
   </header>
 
   <main>
-    <!-- TOOLS (consolidated) -->
+    <!-- DATA & DASHBOARDS -->
     <section>
-      <div class="section-head"><h2>Tools &amp; Dashboards</h2></div>
+      <div class="section-head"><h2>Data &amp; Dashboards</h2></div>
       <div class="tool-cols">
         <div class="tool-col comps">
           <p class="col-head">Market Data</p>
@@ -254,18 +254,28 @@
           </a>
           <!-- Add more Market Data tools here as slim <a class="link"> rows -->
         </div>
-        <div class="tool-col web">
-          <p class="col-head">Web Tools</p>
-          <a class="link" href="https://rent-table.netlify.app" target="_blank" rel="noopener" title="Compare lease and renewal options side by side">
-            <span class="ic">R</span><span class="l-name">Rent / Lease Comparison</span><span class="l-arrow">&rarr;</span>
-          </a>
-        </div>
         <div class="tool-col data">
           <p class="col-head">Merritt Data</p>
           <a class="link" href="https://devgraphs.netlify.app" target="_blank" rel="noopener" title="Development & lease-up pipeline dashboard">
             <span class="ic">D</span><span class="l-name">Development Pipeline</span><span class="l-arrow">&rarr;</span>
           </a>
-          <!-- Add more Merritt Data dashboards here as slim <a class="link"> rows: TI, Leasing Activity, etc. -->
+          <a class="link" href="https://merrittlact.netlify.app" target="_blank" rel="noopener" title="Leasing activity dashboard">
+            <span class="ic">L</span><span class="l-name">Leasing Activity</span><span class="l-arrow">&rarr;</span>
+          </a>
+          <!-- Add more Merritt Data dashboards here as slim <a class="link"> rows: TI, etc. -->
+        </div>
+      </div>
+    </section>
+
+    <!-- WEB TOOLS -->
+    <section>
+      <div class="section-head"><h2>Web Tools</h2></div>
+      <div class="tool-cols">
+        <div class="tool-col web">
+          <a class="link" href="https://rent-table.netlify.app" target="_blank" rel="noopener" title="Compare lease and renewal options side by side">
+            <span class="ic">R</span><span class="l-name">Rent / Lease Comparison</span><span class="l-arrow">&rarr;</span>
+          </a>
+          <!-- Add more Web Tools here as slim <a class="link"> rows -->
         </div>
       </div>
     </section>
