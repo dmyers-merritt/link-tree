@@ -39,16 +39,12 @@
     border-bottom: 4px solid var(--green);
     overflow: hidden;
   }
-  .header-inner { max-width: 1040px; margin: 0 auto; position: relative; }
-  .hero-mark {
-    position: absolute;
-    right: 4px;
-    top: 50%;
-    transform: translateY(-50%);
-    height: 132px;
-    width: auto;
-    pointer-events: none;
-  }
+  .header-inner { max-width: 1040px; margin: 0 auto; }
+  .hero-top { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+  .hero-titles { min-width: 0; }
+  .hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; flex: none; }
+  .hero-mark { height: 80px; width: auto; pointer-events: none; }
+  .hero-widget iframe { width: 100%; max-width: 480px; height: 300px; border: 0; display: block; }
   .brand-rider {
     font-size: 12px;
     letter-spacing: .22em;
@@ -219,8 +215,10 @@
   }
   .note strong { color: var(--navy); }
 
-  @media (max-width: 720px) {
-    .hero-mark { height: 84px; opacity: .5; right: 0; top: 18px; transform: none; }
+  @media (max-width: 760px) {
+    .hero-top { flex-direction: column; align-items: flex-start; gap: 18px; }
+    .hero-right { align-items: flex-start; width: 100%; }
+    .hero-mark { height: 64px; }
   }
   @media (max-width: 480px) {
     .hero-mark { display: none; }
@@ -235,10 +233,18 @@
 <body>
   <header>
     <div class="header-inner">
-      <img class="hero-mark" src="assets/merritt-mark.svg" alt="Merritt Properties" />
-      <p class="brand-rider">Merritt Properties &nbsp;•&nbsp; Leasing</p>
-      <h1>Leasing Toolbox</h1>
-      <p class="subtitle">One place for the web tools and spreadsheet templates the Merritt leasing team uses every day. Open a tool in your browser, or download a template straight into Excel.</p>
+      <div class="hero-top">
+        <div class="hero-titles">
+          <p class="brand-rider">Merritt Properties &nbsp;•&nbsp; Leasing</p>
+          <h1>Leasing Tools</h1>
+        </div>
+        <div class="hero-right">
+          <img class="hero-mark" src="assets/merritt-mark.svg" alt="Merritt Properties" />
+          <div class="hero-widget">
+            <iframe src="https://merrittliveoccupancy.netlify.app/compact.html" style="width:100%;max-width:480px;height:300px;border:0" title="Live Occupancy" loading="lazy"></iframe>
+          </div>
+        </div>
+      </div>
     </div>
   </header>
 
