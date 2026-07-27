@@ -31,6 +31,11 @@
     line-height: 1.5;
   }
 
+  /* ---------- Logo bar ---------- */
+  .logobar { background: #fff; border-bottom: 1px solid var(--cool-gray); }
+  .logobar-inner { max-width: 1040px; margin: 0 auto; padding: 16px 24px; }
+  .logo { height: 44px; width: auto; display: block; }
+
   /* ---------- Header ---------- */
   header {
     background: var(--navy);
@@ -217,9 +222,15 @@
 </style>
 </head>
 <body>
+  <div class="logobar">
+    <div class="logobar-inner">
+      <img class="logo" src="assets/merritt-logo.svg" alt="Merritt Properties" />
+    </div>
+  </div>
+
   <header>
     <div class="header-inner">
-      <p class="brand-rider">Merritt Properties &nbsp;•&nbsp; Leasing</p>
+      <p class="brand-rider">Leasing</p>
       <h1>Leasing Toolbox</h1>
       <p class="subtitle">One place for the web tools and spreadsheet templates the Merritt leasing team uses every day. Open a tool in your browser, or download a template straight into Excel.</p>
     </div>
