@@ -97,7 +97,7 @@
     color: var(--navy);
     margin: 0;
   }
-  section { margin-bottom: 44px; }
+  section { margin-bottom: 34px; }
 
   /* ---------- Tool cards ---------- */
   .tools { display: grid; grid-template-columns: repeat(auto-fit, minmax(280px, 1fr)); gap: 18px; }
@@ -176,9 +176,11 @@
   /* ---------- Data & Dashboards: stacked categories + live widget ---------- */
   .dd-grid { display: grid; grid-template-columns: 1fr 520px; gap: 14px; align-items: start; }
   .dd-left { display: grid; gap: 14px; }
-  .dd-widget iframe { width: 520px; max-width: 100%; height: 440px; border: 0; display: block; }
+  .dd-widget { margin-top: -16px; }  /* offset the widget's 16px body padding so its card top aligns with Market Data */
+  .dd-widget iframe { width: 520px; max-width: 100%; height: 410px; border: 0; display: block; }
   @media (max-width: 900px) {
     .dd-grid { grid-template-columns: 1fr; }
+    .dd-widget { margin-top: 0; }
     .dd-widget iframe { width: 100%; }
   }
 
