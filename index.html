@@ -40,11 +40,11 @@
     overflow: hidden;
   }
   .header-inner { max-width: 1040px; margin: 0 auto; }
-  .hero-top { display: flex; align-items: center; justify-content: space-between; gap: 28px; }
+  .hero-top { display: flex; align-items: center; justify-content: space-between; gap: 32px; }
   .hero-titles { min-width: 0; }
-  .hero-right { display: flex; flex-direction: column; align-items: flex-end; gap: 16px; flex: none; }
-  .hero-mark { height: 80px; width: auto; pointer-events: none; }
-  .hero-widget iframe { width: 100%; max-width: 480px; height: 300px; border: 0; display: block; }
+  .hero-mark { height: 72px; width: auto; display: block; margin-top: 22px; pointer-events: none; }
+  .hero-widget { flex: none; }
+  .hero-widget iframe { width: 500px; max-width: 100%; height: 360px; border: 0; display: block; }
   .brand-rider {
     font-size: 12px;
     letter-spacing: .22em;
@@ -216,12 +216,9 @@
   .note strong { color: var(--navy); }
 
   @media (max-width: 760px) {
-    .hero-top { flex-direction: column; align-items: flex-start; gap: 18px; }
-    .hero-right { align-items: flex-start; width: 100%; }
-    .hero-mark { height: 64px; }
-  }
-  @media (max-width: 480px) {
-    .hero-mark { display: none; }
+    .hero-top { flex-direction: column; align-items: flex-start; gap: 20px; }
+    .hero-widget { width: 100%; }
+    .hero-mark { height: 60px; margin-top: 18px; }
   }
   @media (max-width: 560px) {
     header { padding: 34px 20px 30px; }
@@ -237,12 +234,10 @@
         <div class="hero-titles">
           <p class="brand-rider">Merritt Properties &nbsp;•&nbsp; Leasing</p>
           <h1>Leasing Tools</h1>
-        </div>
-        <div class="hero-right">
           <img class="hero-mark" src="assets/merritt-mark.svg" alt="Merritt Properties" />
-          <div class="hero-widget">
-            <iframe src="https://merrittliveoccupancy.netlify.app/compact.html" style="width:100%;max-width:480px;height:300px;border:0" title="Live Occupancy" loading="lazy"></iframe>
-          </div>
+        </div>
+        <div class="hero-widget">
+          <iframe src="https://merrittliveoccupancy.netlify.app/compact.html" title="Live Occupancy" loading="lazy"></iframe>
         </div>
       </div>
     </div>
