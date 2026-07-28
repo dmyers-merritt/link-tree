@@ -264,6 +264,9 @@
             <a class="link" href="https://merrittcomps.netlify.app" target="_blank" rel="noopener" title="Search and add lease and sale comps">
               <span class="ic">C</span><span class="l-name">Comp Database</span><span class="l-arrow">&rarr;</span>
             </a>
+            <a class="link" href="reports/" title="Merritt vs. Market submarket reports">
+              <span class="ic">R</span><span class="l-name">Merritt Market Reports</span><span class="l-arrow">&rarr;</span>
+            </a>
             <!-- Add more Market Data tools here as slim <a class="link"> rows -->
           </div>
           <div class="tool-col data">
@@ -406,6 +409,8 @@
     // Some browser setups ignore target="_blank"; window.open overrides that,
     // while we still respect Ctrl/Cmd/Shift/middle-click for the user's own choices.
     document.querySelectorAll('a.link').forEach(function (a) {
+      // Only force a new tab for links to OTHER sites; internal links (e.g. Market Reports) open normally.
+      if (!a.hostname || a.hostname === location.hostname) return;
       a.setAttribute('target', '_blank');
       a.setAttribute('rel', 'noopener noreferrer');
       a.addEventListener('click', function (e) {

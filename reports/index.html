@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1" />
+<meta name="robots" content="noindex, nofollow" />
+<title>Merritt Market Reports</title>
+<style>
+  :root {
+    --navy: #002f6c;
+    --green: #64a70b;
+    --light-blue: #0085ad;
+    --slate: #4d5858;
+    --cool-gray: #d9d8d6;
+    --cream: #faf9f6;
+    --card: #ffffff;
+    --ink: #1c2124;
+    --radius: 3px;
+    --shadow: 0 1px 3px rgba(0,0,0,.10), 0 6px 18px rgba(0,47,108,.06);
+    --sans: "Avenir Next LT Pro", "Avenir Next", Helvetica, Arial, sans-serif;
+    --head: "Tungsten", "Avenir Next LT Pro", Helvetica, Arial, sans-serif;
+  }
+  * { box-sizing: border-box; }
+  html, body { margin: 0; padding: 0; }
+  body { font-family: var(--sans); color: var(--ink); background: var(--cream); -webkit-font-smoothing: antialiased; line-height: 1.5; }
+
+  header { background: var(--navy); color: #fff; padding: 34px 24px 30px; border-bottom: 4px solid var(--green); }
+  .header-inner { max-width: 1280px; margin: 0 auto; }
+  .back { display: inline-flex; align-items: center; gap: 7px; font-size: 12px; font-weight: 600; letter-spacing: .06em; text-transform: uppercase; color: #cdd6e4; text-decoration: none; margin-bottom: 14px; }
+  .back:hover { color: var(--green); }
+  .brand-rider { font-size: 12px; letter-spacing: .22em; text-transform: uppercase; color: var(--green); font-weight: 600; margin: 0 0 10px; }
+  h1 { font-family: var(--head); font-weight: 600; font-size: clamp(30px, 5vw, 44px); line-height: 1.02; letter-spacing: .01em; text-transform: uppercase; margin: 0; }
+
+  main { max-width: 1280px; margin: 0 auto; padding: 40px 24px 64px; }
+  .files { display: grid; grid-template-columns: repeat(auto-fill, minmax(320px, 1fr)); gap: 14px; }
+  .file {
+    display: flex; align-items: center; gap: 15px;
+    background: var(--card); border: 1px solid var(--cool-gray); border-top: 3px solid var(--navy);
+    border-radius: var(--radius); padding: 18px 18px; text-decoration: none; color: inherit;
+    transition: border-color .12s ease, box-shadow .12s ease, transform .12s ease;
+  }
+  .file:hover { border-color: var(--green); box-shadow: var(--shadow); transform: translateY(-2px); }
+  .file .ic { flex: none; width: 44px; height: 44px; border-radius: var(--radius); display: grid; place-items: center; background: var(--navy); color: #fff; font-size: 11px; font-weight: 700; }
+  .file .body { min-width: 0; flex: 1; }
+  .file .name { font-size: 15.5px; font-weight: 600; color: var(--navy); margin: 0 0 2px; }
+  .file .meta { font-size: 12.5px; color: var(--slate); margin: 0; }
+  .file .go { flex: none; color: var(--green); font-size: 15px; font-weight: 700; }
+  .lead { font-size: 14px; color: var(--slate); margin: 0 0 22px; }
+  .lead strong { color: var(--navy); }
+</style>
+</head>
+<body>
+  <header>
+    <div class="header-inner">
+      <a class="back" href="../">&larr; Leasing Tools</a>
+      <p class="brand-rider">Merritt Properties &nbsp;•&nbsp; Market Data</p>
+      <h1>Merritt Market Reports</h1>
+    </div>
+  </header>
+
+  <main>
+    <p class="lead"><strong>Merritt vs. Market</strong> submarket reports. Click a report to open it.</p>
+    <div class="files">
+      <!-- Add more reports: copy the HTML into this /reports folder and duplicate a card below. -->
+      <a class="file" href="83%20North%20Office%206-2026.html">
+        <span class="ic">RPT</span>
+        <span class="body"><span class="name">83 North — Office</span><p class="meta">Merritt vs. Market &nbsp;•&nbsp; June 2026</p></span>
+        <span class="go">&rarr;</span>
+      </a>
+      <a class="file" href="Columbia%20Office%206-2026.html">
+        <span class="ic">RPT</span>
+        <span class="body"><span class="name">Columbia — Office</span><p class="meta">Merritt vs. Market &nbsp;•&nbsp; June 2026</p></span>
+        <span class="go">&rarr;</span>
+      </a>
+      <a class="file" href="South%20West%20Industrial%206-2026.html">
+        <span class="ic">RPT</span>
+        <span class="body"><span class="name">South West — Industrial</span><p class="meta">Merritt vs. Market &nbsp;•&nbsp; June 2026</p></span>
+        <span class="go">&rarr;</span>
+      </a>
+    </div>
+  </main>
+</body>
+</html>
