@@ -397,5 +397,21 @@
       <span>Internal use. Questions? Contact Dalton Myers &nbsp;•&nbsp; dmyers@merrittproperties.com</span>
     </div>
   </footer>
+
+  <script>
+    // Force website links (the tool/dashboard tiles) to open in a new tab.
+    // Some browser setups ignore target="_blank"; window.open overrides that,
+    // while we still respect Ctrl/Cmd/Shift/middle-click for the user's own choices.
+    document.querySelectorAll('a.link').forEach(function (a) {
+      a.setAttribute('target', '_blank');
+      a.setAttribute('rel', 'noopener noreferrer');
+      a.addEventListener('click', function (e) {
+        if (e.defaultPrevented) return;
+        if (e.button !== 0 || e.metaKey || e.ctrlKey || e.shiftKey || e.altKey) return;
+        e.preventDefault();
+        window.open(a.href, '_blank', 'noopener');
+      });
+    });
+  </script>
 </body>
 </html>
