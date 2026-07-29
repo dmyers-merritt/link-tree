@@ -167,6 +167,9 @@
   .tool-col.comps .link .ic { background: var(--navy); }
   .tool-col.data .link .ic { background: var(--light-blue); }
   .link .l-name { flex: 1; min-width: 0; font-size: 14px; font-weight: 600; color: var(--navy); line-height: 1.2; }
+  .link .l-name .tag { display: inline-block; font-size: 9.5px; font-weight: 700; letter-spacing: .08em; text-transform: uppercase; color: var(--slate); background: #eceef0; border-radius: 2px; padding: 1px 6px; margin-left: 8px; vertical-align: middle; }
+  .link.is-folder .ic { background: #e7ebf1; color: var(--navy); }
+  .link.is-folder .ic svg path { fill: var(--navy); }
   .link .l-arrow { flex: none; color: var(--cool-gray); font-size: 15px; transition: transform .12s ease, color .12s ease; }
   .link:hover .l-arrow { color: var(--green); transform: translateX(3px); }
   .tool-col.comps .link:hover .l-arrow { color: var(--navy); }
@@ -264,11 +267,13 @@
             <a class="link" href="https://merrittcomps.netlify.app" target="_blank" rel="noopener" title="Search and add lease and sale comps">
               <span class="ic">C</span><span class="l-name">Comp Database</span><span class="l-arrow">&rarr;</span>
             </a>
-            <a class="link" href="reports/" title="Merritt vs. Market submarket reports">
-              <span class="ic">R</span><span class="l-name">Merritt Market Reports</span><span class="l-arrow">&rarr;</span>
-            </a>
             <a class="link" href="https://merrittspecdev.netlify.app" target="_blank" rel="noopener" title="Speculative development tracker">
               <span class="ic">S</span><span class="l-name">Spec Development</span><span class="l-arrow">&rarr;</span>
+            </a>
+            <a class="link is-folder" href="reports/" title="Folder of Merritt vs. Market HTML reports">
+              <span class="ic"><svg viewBox="0 0 24 24" width="19" height="19" aria-hidden="true"><path fill="#fff" d="M10 4H4a2 2 0 0 0-2 2v12a2 2 0 0 0 2 2h16a2 2 0 0 0 2-2V8a2 2 0 0 0-2-2h-8l-2-2z"/></svg></span>
+              <span class="l-name">Merritt Market Reports <span class="tag">Folder</span></span>
+              <span class="l-arrow">&rarr;</span>
             </a>
             <!-- Add more Market Data tools here as slim <a class="link"> rows -->
           </div>
