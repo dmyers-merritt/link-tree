@@ -180,7 +180,7 @@
   .dd-grid { display: grid; grid-template-columns: 1fr 480px; gap: 14px; align-items: start; }
   .dd-left { display: grid; gap: 14px; }
   .dd-widget { margin-top: -16px; }  /* offset the widget's 16px body padding so its card top aligns with Market Data */
-  .dd-widget iframe { width: 100%; max-width: 480px; border: 0; display: block; }  /* height is auto-set by the resize listener */
+  .dd-widget iframe { width: 100%; max-width: 480px; border: 0; display: block; }  /* fixed height set inline; widget caps + scrolls its popover internally */
   @media (max-width: 900px) {
     .dd-grid { grid-template-columns: 1fr; }
     .dd-widget { margin-top: 0; }
@@ -291,7 +291,7 @@
           </div>
         </div>
         <div class="dd-widget">
-          <iframe class="merritt-occ" src="https://merrittliveoccupancy.netlify.app/compact.html" style="width:100%;max-width:480px;height:300px;border:0;display:block" scrolling="no" title="Live Occupancy" loading="lazy"></iframe>
+          <iframe class="merritt-occ" src="https://merrittliveoccupancy.netlify.app/compact.html" style="width:100%;max-width:480px;height:390px;border:0;display:block" scrolling="no" title="Live Occupancy" loading="lazy"></iframe>
         </div>
       </div>
     </section>
@@ -426,16 +426,6 @@
         e.preventDefault();
         window.open(a.href, '_blank', 'noopener');
       });
-    });
-  </script>
-
-  <script>
-    // Auto-size the embedded occupancy widget: it posts its height so it never scrolls or leaves a gap.
-    window.addEventListener('message', function (e) {
-      if (!e.data || e.data.type !== 'merritt-occ-resize') return;
-      var frames = document.querySelectorAll('iframe');
-      for (var i = 0; i < frames.length; i++)
-        if (frames[i].contentWindow === e.source) frames[i].style.height = e.data.height + 'px';
     });
   </script>
 </body>
