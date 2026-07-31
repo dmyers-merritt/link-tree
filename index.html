@@ -232,6 +232,34 @@
   }
   .note strong { color: var(--navy); }
 
+  /* ---------- Feedback button + modal ---------- */
+  .hero-cta {
+    margin-top: 22px; display: inline-flex; align-items: center; gap: 8px;
+    background: var(--green); color: #fff; border: 0; cursor: pointer;
+    font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase;
+    padding: 11px 18px; border-radius: var(--radius); transition: background .12s ease, transform .12s ease;
+  }
+  .hero-cta:hover { background: #59930a; transform: translateY(-1px); }
+  .modal-overlay { position: fixed; inset: 0; background: rgba(0,20,50,.55); display: none; align-items: flex-start; justify-content: center; padding: 6vh 16px 16px; z-index: 1000; }
+  .modal-overlay.open { display: flex; }
+  .modal-card { background: #fff; border-radius: var(--radius); width: 100%; max-width: 460px; box-shadow: 0 12px 40px rgba(0,0,0,.30); border-top: 4px solid var(--green); padding: 24px 24px 22px; position: relative; }
+  .modal-card h2 { font-family: var(--head); text-transform: uppercase; letter-spacing: .03em; color: var(--navy); font-size: 24px; margin: 0 0 4px; }
+  .modal-card .sub { font-size: 13px; color: var(--slate); margin: 0 0 18px; }
+  .modal-close { position: absolute; top: 10px; right: 14px; background: none; border: 0; font-size: 24px; line-height: 1; color: var(--slate); cursor: pointer; }
+  .modal-close:hover { color: var(--navy); }
+  .field { margin-bottom: 14px; }
+  .field label { display: block; font-size: 12px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; color: var(--navy); margin-bottom: 5px; }
+  .field input, .field textarea { width: 100%; font-family: var(--sans); font-size: 14px; color: var(--ink); border: 1px solid var(--cool-gray); border-radius: var(--radius); padding: 9px 11px; background: #fff; }
+  .field input:focus, .field textarea:focus { outline: none; border-color: var(--green); box-shadow: 0 0 0 2px rgba(100,167,11,.18); }
+  .field textarea { resize: vertical; min-height: 96px; }
+  .modal-submit { background: var(--navy); color: #fff; border: 0; cursor: pointer; font-family: var(--sans); font-size: 13px; font-weight: 700; letter-spacing: .04em; text-transform: uppercase; padding: 11px 20px; border-radius: var(--radius); width: 100%; transition: background .12s ease; }
+  .modal-submit:hover { background: #013a86; }
+  .modal-success { display: none; text-align: center; padding: 14px 0 8px; }
+  .modal-success .check { font-size: 36px; color: var(--green); line-height: 1; }
+  .modal-success p { color: var(--slate); font-size: 14px; margin: 10px 0 0; }
+  .modal-card.done .modal-form { display: none; }
+  .modal-card.done .modal-success { display: block; }
+
   @media (max-width: 720px) {
     .hero-mark { height: 84px; opacity: .5; right: 0; top: 18px; transform: none; }
   }
@@ -252,6 +280,7 @@
       <p class="brand-rider">Merritt Properties &nbsp;•&nbsp; Leasing</p>
       <h1>Leasing Tools</h1>
       <p class="subtitle">One place for the web tools and spreadsheet templates the Merritt leasing team uses every day. Open a tool in your browser, or download a template straight into Excel.</p>
+      <button type="button" class="hero-cta" id="openFeedback">Suggest an addition or change</button>
     </div>
   </header>
 
@@ -427,6 +456,51 @@
         window.open(a.href, '_blank', 'noopener');
       });
     });
+  </script>
+
+  <!-- Feedback / requests modal (submits via Netlify Forms -> email to Dalton) -->
+  <div class="modal-overlay" id="feedbackModal" role="dialog" aria-modal="true" aria-labelledby="fbTitle">
+    <div class="modal-card" id="feedbackCard">
+      <button type="button" class="modal-close" id="closeFeedback" aria-label="Close">&times;</button>
+      <h2 id="fbTitle">Requests &amp; Ideas</h2>
+      <p class="sub">Suggest a tool, report an issue, or ask for a change &mdash; it goes straight to Dalton.</p>
+      <form name="feedback" class="modal-form" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <input type="hidden" name="form-name" value="feedback" />
+        <p hidden><label>Leave this blank: <input name="bot-field" /></label></p>
+        <div class="field"><label for="fb-name">Your name</label><input id="fb-name" type="text" name="name" required /></div>
+        <div class="field"><label for="fb-email">Email <span style="font-weight:400;text-transform:none;letter-spacing:0;color:var(--slate)">(optional, for a reply)</span></label><input id="fb-email" type="email" name="email" /></div>
+        <div class="field"><label for="fb-msg">Comment or request</label><textarea id="fb-msg" name="message" required placeholder="e.g. It would be great to add&hellip; / Please fix&hellip; / Can you change&hellip;"></textarea></div>
+        <button type="submit" class="modal-submit">Send to Dalton</button>
+      </form>
+      <div class="modal-success">
+        <div class="check">&#10003;</div>
+        <p>Thanks! Your note was sent to Dalton.</p>
+      </div>
+    </div>
+  </div>
+
+  <script>
+    (function () {
+      var overlay = document.getElementById('feedbackModal');
+      var card = document.getElementById('feedbackCard');
+      var openBtn = document.getElementById('openFeedback');
+      var closeBtn = document.getElementById('closeFeedback');
+      if (!overlay || !openBtn) return;
+      var form = overlay.querySelector('form[name="feedback"]');
+      function open() { card.classList.remove('done'); overlay.classList.add('open'); }
+      function close() { overlay.classList.remove('open'); }
+      openBtn.addEventListener('click', open);
+      closeBtn.addEventListener('click', close);
+      overlay.addEventListener('click', function (e) { if (e.target === overlay) close(); });
+      document.addEventListener('keydown', function (e) { if (e.key === 'Escape') close(); });
+      if (form) form.addEventListener('submit', function (e) {
+        e.preventDefault();
+        var body = new URLSearchParams(new FormData(form)).toString();
+        fetch('/', { method: 'POST', headers: { 'Content-Type': 'application/x-www-form-urlencoded' }, body: body })
+          .then(function () { card.classList.add('done'); })
+          .catch(function () { card.classList.add('done'); });
+      });
+    })();
   </script>
 </body>
 </html>
